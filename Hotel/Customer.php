@@ -6,7 +6,6 @@ Class Customer {
     private string $_lastName;
     private array $_reservations;
 
-
 //Constructeur
 public function __construct($idCustomer, $firstName, $lastName, $_reservations){
     $this->_idCustomer = $idCustomer;             
@@ -39,7 +38,7 @@ public function getReservations(){
 
 //Setters
 public function setIdCustomer($idCustomer) {
-    $this->_idRoom = $idRoom;
+    $this->_idCustomer = $idCustomer;
     }
 
 public function setFirstName($firstName) {
@@ -55,3 +54,4 @@ public function addReservation($reservations){
     }
 
 }
+?>

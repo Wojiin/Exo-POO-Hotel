@@ -1,5 +1,4 @@
 <?php
-
 Class Hotel {          
     //Attributs 
     private int $_idHotel;
@@ -10,17 +9,18 @@ Class Hotel {
     private array $_rooms;
 
     //Constructeur
-    public function __construct($idHotel, $name, $adress, $_postalCode, $city, $rooms){
+    public function __construct($idHotel, $name, $adress, $postalCode, $city, $rooms){
         $this->_idHotel = $idHotel;             
         $this->_name = $name;              
         $this->_adress = $adress; 
         $this->_postalCode = $postalCode;
+        $this->_city = $city;
         $this->_rooms = [];
     }
 
     //toString
     public function __toString() {
-        return "{$this->_idHotel}{$this->_name} {$this->_adress}{$this->_postalCode}{$this->_rooms}";
+        return "{$this->_idHotel}{$this->_name} {$this->_adress}{$this->_postalCode}{$this->_city}";
     }
 
     //Getters
@@ -28,24 +28,24 @@ Class Hotel {
         return $this->_idHotel;
     }
 
-        public function getName() {
+    public function getName() {
         return $this->_name;
     }
 
-        public function getAdress() {
+    public function getAdress() {
         return $this->_adress;
     }
 
-        public function getPostalCode() {
+    public function getPostalCode() {
         return $this->_postalCode;
     }
 
-        public function getCity() {
+    public function getCity() {
         return $this->_city;
     }
 
-        public function getInfosRooms() {
-        return $this->_infosRooms;
+    public function getRooms() {
+        return $this->_rooms;
     }
 
     //Setters
@@ -82,3 +82,4 @@ Class Hotel {
         }
     }
 }
+?>

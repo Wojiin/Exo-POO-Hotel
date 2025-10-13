@@ -1,12 +1,12 @@
 <?php 
-
 class Reservation{
-
+//Attributs
     private Customer $_customer;
     private Room $_room;
     private DateTime $_date_start;
     private DateTime $_date_end;
 
+//Constructeur
     public function __construct(Customer $customer, Room $room, $date_start,  $date_end){
         $this->_customer = $customer;
         $this->_room = $room;
@@ -40,11 +40,11 @@ class Reservation{
     }
 
     public function setDateStart($date){
-        $this->_date_debut = $date;
+        $this->_date_start = $date;
     }
 
     public function setDateEnd($date){
-        $this->_date_start = $date;
+        $this->_date_end = $date;
     }    
 }
 ?>

@@ -1,18 +1,38 @@
 <?php
-require "Hotel.php";
-require "Room.php";
-require "Customer.php";
+require_once "Customer.php";
+require_once "Hotel.php";
+require_once "Room.php";
+require_once "Reservation.php";
 
-//Hotel
+$hilton = new Hotel(1, "Hilton **** Strasbourg", "10 route de la Gare", 67000, "STRASBOURG", []);
+$regent = new Hotel(2, "Regent **** Paris", "1 rue de Rivoli", 75001, "PARIS", []);
 
-$h1 = new Hotel ("01","Hilton**** Strasbourg", "10 route de la gare","67000", "Strasbourg","");
-$h2 = new Hotel ("02","Campanile**** Strasbourg", "11 route de la gare","67000", "Strasbourg","");
-$h3 = new Hotel ("03","Mercure**** Strasbourg", "12 route de la gare","67000", "Strasbourg","");
-$h4 = new Hotel ("04","Formule1**** Strasbourg", "13 route de la gare","67000", "Strasbourg","");
+// Ajout des chambres à l'hôtel Hilton
+$room1 = new Room(1, 120, false, true, 2, $hilton, []);
+$room2 = new Room(2, 120, false, true, 2, $hilton, []);
+$room3 = new Room(3, 120, false, true, 2, $hilton, []);
+$room4 = new Room(4, 120, false, true, 2, $hilton, []);
+$room16 = new Room(16, 300, true, true, 2, $hilton, []);
+$room17 = new Room(17, 300, true, true, 2, $hilton, []);
+$room18 = new Room(18, 300, true, true, 2, $hilton, []);
+$room19 = new Room(19, 300, true, true, 2, $hilton, []);
 
-//Room
+$hilton->addRoom($room1);
+$hilton->addRoom($room2);
+$hilton->addRoom($room3);
+$hilton->addRoom($room4);
+$hilton->addRoom($room16);
+$hilton->addRoom($room17);
+$hilton->addRoom($room18);
+$hilton->addRoom($room19);
 
-$r1 = new Room ("01", "120", "")
-$r2 = new Room ()
-$r3 = new Room ()
-$r4 = new Room ()
+// Clients
+$virgile = new Customer(1, "Virgile", "Gibello", []);
+$micka = new Customer(2, "Micka", "Murmann", []);
+
+// Réservations
+$res1 = new Reservation($virgile, $room17, new DateTime("2021-01-01"), new DateTime("2021-01-01"));
+$res2 = new Reservation($micka, $room3, new DateTime("2021-03-11"), new DateTime("2021-03-11"));
+$res3 = new Reservation($micka, $room4, new DateTime("2021-04-01"), new DateTime("2021-04-01"));
+
+?>
