@@ -48,10 +48,8 @@ public function setFirstName($firstName) {
 public function setLastName($lastName) {
     $this->_lastName = $lastName;
     }
-
 public function addReservation($reservations){
     $this->_reservations[] = $reservations;
     }
-
 }
 ?>

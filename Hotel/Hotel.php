@@ -8,19 +8,23 @@ Class Hotel {
     private string $_city;
     private array $_rooms;
 
+
     //Constructeur
-    public function __construct($idHotel, $name, $adress, $postalCode, $city, $rooms){
+    public function __construct($idHotel, $name, $adress, $postalCode, $city){
         $this->_idHotel = $idHotel;             
         $this->_name = $name;              
         $this->_adress = $adress; 
         $this->_postalCode = $postalCode;
         $this->_city = $city;
         $this->_rooms = [];
+        
     }
 
     //toString
     public function __toString() {
-        return "{$this->_idHotel}{$this->_name} {$this->_adress}{$this->_postalCode}{$this->_city}";
+        return "{$this->_idHotel}<br>
+        {$this->_name}<br>
+        {$this->_adress}{$this->_postalCode}{$this->_city}<br>";
     }
 
     //Getters
@@ -74,12 +78,11 @@ Class Hotel {
     }
 
     public function infosHotel(){
-        echo "Infos {$this->_name} <br>
-              ******************* <br>
-              {$this->_adress} {$this->_city} {$this->_postalCode} <br>";    
-        foreach($this->_rooms as $room){
-            echo "$room<br>";
-        }
+        echo "Infos {$this->_name}<br>
+        {$this->_adress} {$this->_postalCode} {$this->_city}<br>";
+            foreach($this ->_rooms as $infosRooms){
+                count[];
+            }
     }
 }
 ?>

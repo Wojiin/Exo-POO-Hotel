@@ -10,19 +10,23 @@ private Hotel $_hotel;
 private array $_reservations;
 
 //Constructeur
-public function __construct($idRoom, $price, $wifi, $state, $nbBed, Hotel $hotel, $reservations){
+public function __construct($idRoom, $price, $wifi, $state, $nbBed, Hotel $hotel){
     $this->_idRoom = $idRoom;             
     $this->_price = $price;              
     $this->_wifi = $wifi; 
     $this->_state = $state;
     $this->_nbBed = $nbBed;
     $this->_hotel = $hotel;
+    $hotel-> addRoom($this);
     $this->_reservations = [];
     }
 
 //toString
 public function __toString() {
-    return "Chambre {$this->_idRoom} - {$this->_price}€ - " . ($this->_wifi ? "Wifi" : "Sans Wifi") . " - {$this->_nbBed} lits";
+    return "Chambre {$this->_idRoom}<br>
+    Prix :{$this->_price}€<br>" . ($this->_wifi ? "Wifi" : "Sans Wifi") . "<br>
+    " . ($this->_state ? "Disponible" : "Réservée") . "<br>
+    Lits :{$this->_nbBed}";
     }
 
 //Getters
@@ -77,6 +81,16 @@ public function setNbBed($nbBed) {
 
 public function addReservation($reservations){
     $this->_reservations[] = $reservations;
+    }
+
+public function infosRoom(){
+    echo "Infos Chambre {$this->_idRoom} <br>
+            ******************* <br>
+            {$this->_price} {$this->_wifi} {$this->_state} <br>
+            *******************<br>";    
+        foreach($this->_reservations as $reservation){
+            echo "$reservation<br><br>";
+        }
     }
 }
 ?>

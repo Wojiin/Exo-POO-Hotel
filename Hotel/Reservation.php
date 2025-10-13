@@ -3,19 +3,26 @@ class Reservation{
 //Attributs
     private Customer $_customer;
     private Room $_room;
-    private DateTime $_date_start;
-    private DateTime $_date_end;
+    private string $_dateStart;
+    private string $_dateEnd;
 
 //Constructeur
-    public function __construct(Customer $customer, Room $room, $date_start,  $date_end){
+    public function __construct(Customer $customer, Room $room, $dateStart, $dateEnd){
         $this->_customer = $customer;
         $this->_room = $room;
-        $this->_date_start = $date_start;
-        $this->_date_end = $date_end;
+        $this->_dateStart = $dateStart;
+        $this->_dateEnd = $dateEnd;
         $customer->addReservation($this);
         $room->addReservation($this);
+       
     }
-
+//toString
+    public function __toString(){
+        return "{$this->_customer}<br>
+        {$this->_room}<br>
+        Date début : {$this->_dateStart}<br>
+        Date fin : {$this->_dateEnd}";
+    }
     //Getter
     public function getCustomer(){
         return $this->_customer;
@@ -24,10 +31,10 @@ class Reservation{
         return $this->_room;
     } 
     public function getDateStart(){
-        return $this->_date_start;
+        return $this->_dateStart;
     }
     public function getDateEnd(){
-        return $this->_date_end;
+        return $this->_dateEnd;
     }
 
     //Setter
@@ -40,11 +47,11 @@ class Reservation{
     }
 
     public function setDateStart($date){
-        $this->_date_start = $date;
+        $this->_dateStart = $date;
     }
 
     public function setDateEnd($date){
-        $this->_date_end = $date;
-    }    
+        $this->_dateEnd = $date;
+    }   
 }
 ?>
