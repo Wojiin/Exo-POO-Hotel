@@ -1,6 +1,6 @@
 <?php
 Class Hotel {          
-    //Attributs 
+    # Attributs 
     private int $_idHotel;
     private string $_name;
     private string $_adress;
@@ -9,25 +9,26 @@ Class Hotel {
     private array $_rooms;
 
 
-    //Constructeur
+    # Constructeur
     public function __construct($idHotel, $name, $adress, $postalCode, $city){
         $this->_idHotel = $idHotel;             
         $this->_name = $name;              
         $this->_adress = $adress; 
         $this->_postalCode = $postalCode;
         $this->_city = $city;
-        $this->_rooms = [];
-        
+        $this->_rooms = [];     
     }
 
-    //toString
+    # toString
     public function __toString() {
         return "{$this->_idHotel}<br>
         {$this->_name}<br>
-        {$this->_adress}{$this->_postalCode}{$this->_city}<br>";
+        {$this->_adress}<br>
+        {$this->_postalCode}<br>
+        {$this->_city}<br>";
     }
 
-    //Getters
+    # Getters
     public function getIdHotel() {
         return $this->_idHotel;
     }
@@ -52,7 +53,7 @@ Class Hotel {
         return $this->_rooms;
     }
 
-    //Setters
+    # Setters
     public function setIdHotel($idHotel) {
         $this->_idHotel = $idHotel;
     }
@@ -77,12 +78,6 @@ Class Hotel {
         $this->_rooms[] = $room; 
     }
 
-    public function infosHotel(){
-        echo "Infos {$this->_name}<br>
-        {$this->_adress} {$this->_postalCode} {$this->_city}<br>";
-            foreach($this ->_rooms as $infosRooms){
-                count[];
-            }
-    }
 }
+
 ?>
