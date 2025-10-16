@@ -55,6 +55,55 @@ Class Customer {
         $this->_reservations[] = $reservations;
     }
 
+    # Fonction d'affichage
+
+    # Affiche toutes les réservations d'un client
+    public function resCustomer() {
+
+    echo "<h3>Réservations de {$this->_firstName} {$this->_lastName}</h3>";
+
+    # Récupère toutes les réservations du client
+    $reservations = $this->_reservations;
+
+    # Défini une variable qui va compter le nombre de réservations
+    $resCountCustomer = count($reservations);
+    echo "<p style ='background-color : #06e42bff; color : white; width : 115px; border-radius : 5px; text-align : center';>$resCountCustomer réservation(s)</p>";
+
+    # Vérifie si le client n'a aucune réservation
+    if ($resCountCustomer == 0) {
+        echo "<p>Ce client n'a pas de réservation.</p>";
+    } else {
+        # Si des réservations existent, on parcourt chacune d'elles
+        echo "<ul class='uk-list'>";
+        foreach ($reservations as $reservation) {
+            # Récupère la chambre et l'hotel associés à la réservation
+            $room  = $reservation->getRoom();
+            $hotel = $room->getHotel();
+
+            # Calcule la durée du séjour à partir des dates de début et de fin
+            $dateEntree = new DateTime($reservation->getDateStart());
+            $dateSortie = new DateTime($reservation->getDateEnd());
+            $duree = $dateSortie->diff($dateEntree)->days + 1;
+
+            # Calcule le total du séjour (prix de la chambre * nombre de jours)
+            $total = $duree * $room->getPrice();
+
+            # Détermine si le wifi est disponible (Oui / Non)
+            $wifi = $room->getWifi() ? "Oui" : "Non";
+
+            # Affiche toutes les informations de la réservation
+            echo "<li>
+                <strong>Hotel : {$hotel->getName()}</strong><br>
+                Chambre {$room->getIdRoom()} (Lits : {$room->getNbBed()} - {$room->getPrice()}€ - Wifi : {$wifi})<br>
+                Date entrée : {$reservation->getDateStart()}<br>
+                Date sortie : {$reservation->getDateEnd()}<br>
+                Total : {$total} €
+            </li><br>";
+            }
+            echo "</ul>";
+        }
+    }
+
 }
 
 ?>
